@@ -1,0 +1,14 @@
+E:\DA\QLKhachSan\QLKhachSan\bin\Debug\QLKhachSan.exe
+E:\DA\QLKhachSan\QLKhachSan\bin\Debug\QLKhachSan.pdb
+E:\DA\QLKhachSan\QLKhachSan\bin\Debug\DAL_KhachSan.dll
+E:\DA\QLKhachSan\QLKhachSan\bin\Debug\DAL_KhachSan.pdb
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\GUI_KhachSan.csprojResolveAssemblyReference.cache
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\QLKhachSan.frmDatPhong.resources
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\QLKhachSan.frmQLKhachHang.resources
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\QLKhachSan.Properties.Resources.resources
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\QLKhachSan.MessageBoxThongBao.resources
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\QLKhachSan.MessageBoxYesNo.resources
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\GUI_KhachSan.csproj.GenerateResource.Cache
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\QLKhachSan.exe.licenses
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\QLKhachSan.exe
+E:\DA\QLKhachSan\QLKhachSan\obj\Debug\QLKhachSan.pdb

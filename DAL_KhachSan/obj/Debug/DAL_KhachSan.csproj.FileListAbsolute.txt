@@ -1,0 +1,6 @@
+E:\DA\QLKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll.config
+E:\DA\QLKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll
+E:\DA\QLKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.pdb
+E:\DA\QLKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.csprojResolveAssemblyReference.cache
+E:\DA\QLKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.dll
+E:\DA\QLKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.pdb
