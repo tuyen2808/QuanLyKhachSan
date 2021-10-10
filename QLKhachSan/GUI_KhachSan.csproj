@@ -58,12 +58,6 @@
     <Compile Include="frmDatPhong.Designer.cs">
       <DependentUpon>frmDatPhong.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNhanPhong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNhanPhong.Designer.cs">
-      <DependentUpon>frmNhanPhong.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmQLKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,11 +78,14 @@
     <Compile Include="MessageBoxYesNo.Designer.cs">
       <DependentUpon>MessageBoxYesNo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Table_Phong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Table_Phong.Designer.cs">
+      <DependentUpon>Table_Phong.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmDatPhong.resx">
       <DependentUpon>frmDatPhong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNhanPhong.resx">
-      <DependentUpon>frmNhanPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQLKhachHang.resx">
       <DependentUpon>frmQLKhachHang.cs</DependentUpon>
@@ -108,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MessageBoxYesNo.resx">
       <DependentUpon>MessageBoxYesNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Table_Phong.resx">
+      <DependentUpon>Table_Phong.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

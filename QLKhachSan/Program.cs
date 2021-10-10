@@ -22,7 +22,7 @@ namespace QLKhachSan
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Application.Run(new frmDatPhong());
+            Application.Run(new Table_Phong());
         }
     }
 }
