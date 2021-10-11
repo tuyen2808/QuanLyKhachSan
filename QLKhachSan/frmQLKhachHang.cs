@@ -162,8 +162,9 @@ namespace QLKhachSan
                     Loaddata();
                     bltb.Show("Sửa Xong");
                 }
-                catch
+                catch(Exception ex)
                 {
+					Console.WriteLine(ex);
                     bltb.Show("Lỗi");
                 }
             }
@@ -243,5 +244,10 @@ namespace QLKhachSan
         {
 
         }
-    }
+
+		private void dtgvTT_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+	}
 }

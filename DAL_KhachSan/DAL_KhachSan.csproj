@@ -42,21 +42,22 @@
   <ItemGroup>
     <Compile Include="ConText.cs" />
     <Compile Include="DAL_DatPhong.cs" />
+    <Compile Include="DAL_NhanPhong.cs" />
     <Compile Include="DAL_QLKhachHang.cs" />
+    <Compile Include="DataKhachSan.cs">
+      <DependentUpon>DataKhachSan.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DataKhachSan.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataKhachSan.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Dataprovider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Table.cs" />
-    <Compile Include="TableDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -62,11 +62,14 @@ namespace QLKhachSan
             cbbKhachHang.Properties.DisplayMember = "TenKhachHang";
             cbbKhachHang.Properties.ValueMember = "MaKhachHang";
 
+			cbbPhong.Properties.DataSource = d.loadcbbP();
+			cbbPhong.Properties.DisplayMember = "MaPhong";
+			cbbPhong.Properties.ValueMember = "MaPhong";
 
-            dtNgayTao.EditValue = DateTime.Now;
+			dtNgayTao.EditValue = DateTime.Now;
             dtNgayNhan.EditValue = DateTime.Now;
             dtNgayTra.EditValue = DateTime.Now;
-            //txtMaDP.Text = d.LayMaPD();
+            txtMaDP.Text = d.LayMaDP();
         }
 
         private void cbbKhachHang_EditValueChanged(object sender, EventArgs e)
@@ -93,23 +96,37 @@ namespace QLKhachSan
             this.Close();
         }
 
-        private void btnXacNhan_Click(object sender, EventArgs e)
+		private void cbbPhong_EditValueChanged(object sender, EventArgs e)
+		{
+			maphong = cbbPhong.EditValue.ToString();
+		}
+
+		private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    MaNV = manv;
-            //    d.ThemPD(txtMaPD.Text, cbbKhachHang.EditValue.ToString(), MaNV, dtNgayTao.Text, dtNgayBD.Text, dtNgayKT.Text, nmrSoDLT.Value.ToString(), nmrSoNguoi.Value.ToString(), txtTinhTrang.Text, cbbHTTT.Text, cbbCTKM.EditValue.ToString());
-            //    bltb.Show("Thêm Phiếu Thành Công!");
-            //    frmDatLoaiPhong dlp = new frmDatLoaiPhong();
-            //    dlp.Show();
-            //    //d.SuaTrangThaiP(maphong);
-            //    dlp.MaDPDangChon = madatphong;
-            //    dlp.MaCTKM = maCTKM;
-            //}
-            //catch
-            //{
-            //    bltb.Show("Lỗi !");
-            //}
-        }
-    }
+			try
+			{
+				var phieuDP = new PHIEUDATPHONG();
+				var chiTietDP = new CHITIETDATPHONG();
+
+				phieuDP.MaPhieuDat = txtMaDP.Text;
+				phieuDP.MaKhachHang = cbbKhachHang.EditValue.ToString();
+
+				chiTietDP.MaPhieuDat = txtMaDP.Text;
+				chiTietDP.MaPhong = maphong;
+				chiTietDP.NgayLap = dtNgayTao.DateTime;
+				chiTietDP.NgayNhan = dtNgayNhan.DateTime;
+				chiTietDP.NgayTra = dtNgayTra.DateTime;
+				chiTietDP.SoNguoi = Convert.ToInt32(numericUpDown1.Value);
+
+				d.ThemPD(phieuDP, chiTietDP);
+				bltb.Show("Thêm Phiếu Thành Công!");
+			}
+			catch(Exception ex)
+			{
+				Console.WriteLine(ex);
+				bltb.Show("Lỗi !");
+			}
+		}
+
+	}
 }

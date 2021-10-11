@@ -12,13 +12,47 @@ namespace DAL_KhachSan
         {
             return qlks.PHONGs.Select(t => t).ToList<PHONG>();
         }
-        public void ThemPD(string MPD, string MKH, string MPhong, string NgayLap, string NgayBD, string NgayKT, string SN)
+		//string MPD, string MKH, string MPhong, string NgayLap, string NgayBD, string NgayKT, string SN
+		public void ThemPD(PHIEUDATPHONG phieuDP, CHITIETDATPHONG chiTietDP)
         {
-           
-            
+			qlks.CHITIETDATPHONGs.InsertOnSubmit(chiTietDP);
+			qlks.PHIEUDATPHONGs.InsertOnSubmit(phieuDP);
+			PHONG p = (from ph in qlks.PHONGs where ph.MaPhong == chiTietDP.MaPhong select ph).SingleOrDefault();
+			if(p != null)
+			{
+				p.LOAITINHTRANG = qlks.LOAITINHTRANGs.SingleOrDefault(x => x.MaLoaiTinhTrangPhong == "TT02");
+				p.MaLoaiTinhTrangPhong = "TT02";
+			}
+			qlks.SubmitChanges();
         }
 
-        
+		public string LayMaDP()
+		{
+			int ma = 0;
+			var listMa = from p in qlks.PHIEUDATPHONGs
+						 select new
+						 {
+							 p.MaPhieuDat
+						 };
+			foreach(var item in listMa)
+			{
+				if (ma < int.Parse(item.MaPhieuDat.Substring(2)))
+				{
+					ma = int.Parse(item.MaPhieuDat.Substring(2));
+				}
+			}
+			if (ma < 9)
+				return "DP00" + (ma + 1).ToString();
+			if (ma < 99)
+				return "DP0" + (ma + 1).ToString();
+			if (ma >= 100)
+				return "DP" + (ma + 1).ToString();
+			return "DP" + (ma + 1).ToString();
+		}
+        public List<LOAITINHTRANG> LayLoaiTinhTrangPhong(string maLoaiTinhTrangPhong)
+		{
+			return qlks.LOAITINHTRANGs.ToList();
+		}
         //public void XoaPhieuDatPhong(string MaPD)
         //{
         //    var itemToRemove = qlks.PHIEUDATPHONGs.SingleOrDefault(x => x.MaPhieuDat == MaPD); //returns a single item.

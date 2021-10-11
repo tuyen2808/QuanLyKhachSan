@@ -53,12 +53,21 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.dtgvPDP = new System.Windows.Forms.DataGridView();
+            this.colMaPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.btnThem = new DevExpress.XtraEditors.SimpleButton();
-            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
+            this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.dtgvCTPD = new System.Windows.Forms.DataGridView();
+            this.colMPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayNhan.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNhanPhong.Properties)).BeginInit();
@@ -76,6 +85,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvCTPD)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -116,6 +127,7 @@
             this.txtMaNhanPhong.Name = "txtMaNhanPhong";
             this.txtMaNhanPhong.Size = new System.Drawing.Size(197, 22);
             this.txtMaNhanPhong.TabIndex = 3;
+            this.txtMaNhanPhong.EditValueChanged += new System.EventHandler(this.txtMaNhanPhong_EditValueChanged);
             // 
             // groupControl1
             // 
@@ -211,6 +223,7 @@
             this.btnThemKH.Size = new System.Drawing.Size(38, 41);
             this.btnThemKH.TabIndex = 8;
             this.btnThemKH.Text = "simpleButton1";
+            this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
             // 
             // cbbKhachHang
             // 
@@ -220,6 +233,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbbKhachHang.Size = new System.Drawing.Size(291, 22);
             this.cbbKhachHang.TabIndex = 7;
+            this.cbbKhachHang.EditValueChanged += new System.EventHandler(this.cbbKhachHang_EditValueChanged);
             // 
             // labelControl7
             // 
@@ -297,18 +311,40 @@
             this.groupControl2.Controls.Add(this.dtgvPDP);
             this.groupControl2.Location = new System.Drawing.Point(617, 42);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(376, 454);
+            this.groupControl2.Size = new System.Drawing.Size(338, 454);
             this.groupControl2.TabIndex = 5;
             this.groupControl2.Text = "PHIẾU ĐẶT PHÒNG";
             // 
             // dtgvPDP
             // 
+            this.dtgvPDP.AllowUserToAddRows = false;
             this.dtgvPDP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvPDP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMaPD,
+            this.colMaKH});
             this.dtgvPDP.Location = new System.Drawing.Point(5, 44);
             this.dtgvPDP.Name = "dtgvPDP";
+            this.dtgvPDP.RowHeadersWidth = 51;
             this.dtgvPDP.RowTemplate.Height = 24;
-            this.dtgvPDP.Size = new System.Drawing.Size(371, 410);
+            this.dtgvPDP.Size = new System.Drawing.Size(328, 410);
             this.dtgvPDP.TabIndex = 0;
+            this.dtgvPDP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPDP_CellClick);
+            // 
+            // colMaPD
+            // 
+            this.colMaPD.HeaderText = "Mã phiếu đặt";
+            this.colMaPD.MinimumWidth = 6;
+            this.colMaPD.Name = "colMaPD";
+            this.colMaPD.ReadOnly = true;
+            this.colMaPD.Width = 135;
+            // 
+            // colMaKH
+            // 
+            this.colMaKH.HeaderText = "Mã khách hàng";
+            this.colMaKH.MinimumWidth = 6;
+            this.colMaKH.Name = "colMaKH";
+            this.colMaKH.ReadOnly = true;
+            this.colMaKH.Width = 135;
             // 
             // groupControl3
             // 
@@ -322,30 +358,6 @@
             this.groupControl3.TabIndex = 6;
             this.groupControl3.Text = "XỬ LÝ";
             // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(6, 39);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
-            this.btnThem.TabIndex = 0;
-            this.btnThem.Text = "Thêm";
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Location = new System.Drawing.Point(318, 39);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
-            this.btnLuu.TabIndex = 1;
-            this.btnLuu.Text = "Lưu";
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(647, 39);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 3;
-            this.btnXoa.Text = "Xóa";
-            // 
             // btnHuy
             // 
             this.btnHuy.Location = new System.Drawing.Point(1001, 39);
@@ -354,15 +366,103 @@
             this.btnHuy.TabIndex = 4;
             this.btnHuy.Text = "Hủy";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(647, 39);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 3;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Location = new System.Drawing.Point(318, 39);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.TabIndex = 1;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(6, 39);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 0;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
             // groupControl4
             // 
             this.groupControl4.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl4.CaptionImageOptions.Image")));
-            this.groupControl4.Location = new System.Drawing.Point(999, 42);
+            this.groupControl4.Controls.Add(this.dtgvCTPD);
+            this.groupControl4.Location = new System.Drawing.Point(961, 42);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(237, 454);
+            this.groupControl4.Size = new System.Drawing.Size(275, 454);
             this.groupControl4.TabIndex = 7;
             this.groupControl4.Text = "Chi Tiết Đặt Phòng";
             this.groupControl4.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl4_Paint);
+            // 
+            // dtgvCTPD
+            // 
+            this.dtgvCTPD.AllowUserToAddRows = false;
+            this.dtgvCTPD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvCTPD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMPD,
+            this.colMP,
+            this.colNL,
+            this.colNN,
+            this.colNT,
+            this.colSN});
+            this.dtgvCTPD.Location = new System.Drawing.Point(14, 45);
+            this.dtgvCTPD.Name = "dtgvCTPD";
+            this.dtgvCTPD.RowHeadersWidth = 51;
+            this.dtgvCTPD.RowTemplate.Height = 24;
+            this.dtgvCTPD.Size = new System.Drawing.Size(256, 404);
+            this.dtgvCTPD.TabIndex = 0;
+            // 
+            // colMPD
+            // 
+            this.colMPD.HeaderText = "Mã phiếu đặt";
+            this.colMPD.MinimumWidth = 6;
+            this.colMPD.Name = "colMPD";
+            this.colMPD.Width = 125;
+            // 
+            // colMP
+            // 
+            this.colMP.HeaderText = "Mã phòng";
+            this.colMP.MinimumWidth = 6;
+            this.colMP.Name = "colMP";
+            this.colMP.Width = 125;
+            // 
+            // colNL
+            // 
+            this.colNL.HeaderText = "Ngày lập";
+            this.colNL.MinimumWidth = 6;
+            this.colNL.Name = "colNL";
+            this.colNL.Width = 125;
+            // 
+            // colNN
+            // 
+            this.colNN.HeaderText = "Ngày nhận";
+            this.colNN.MinimumWidth = 6;
+            this.colNN.Name = "colNN";
+            this.colNN.Width = 125;
+            // 
+            // colNT
+            // 
+            this.colNT.HeaderText = "Ngày trả";
+            this.colNT.MinimumWidth = 6;
+            this.colNT.Name = "colNT";
+            this.colNT.Width = 125;
+            // 
+            // colSN
+            // 
+            this.colSN.HeaderText = "Số người";
+            this.colSN.MinimumWidth = 6;
+            this.colSN.Name = "colSN";
+            this.colSN.Width = 125;
             // 
             // frmNhanPhong
             // 
@@ -379,6 +479,7 @@
             this.Controls.Add(this.labelControl1);
             this.Name = "frmNhanPhong";
             this.Text = "Nhận Phòng";
+            this.Load += new System.EventHandler(this.frmNhanPhong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayNhan.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNhanPhong.Properties)).EndInit();
@@ -397,6 +498,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvCTPD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -433,5 +536,14 @@
         private DevExpress.XtraEditors.SimpleButton btnLuu;
         private DevExpress.XtraEditors.SimpleButton btnThem;
         private DevExpress.XtraEditors.GroupControl groupControl4;
-    }
+		private System.Windows.Forms.DataGridView dtgvCTPD;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colMaPD;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colMaKH;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colMPD;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colMP;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colNL;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colNN;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colNT;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colSN;
+	}
 }
