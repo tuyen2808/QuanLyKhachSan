@@ -16,3 +16,9 @@ C:\Users\Admin\Downloads\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll
 C:\Users\Admin\Downloads\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.pdb
 C:\Users\Admin\Downloads\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.dll
 C:\Users\Admin\Downloads\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.pdb
+C:\Users\84382\Desktop\QLKSMAU\QuanLyKhachSan-main\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll.config
+C:\Users\84382\Desktop\QLKSMAU\QuanLyKhachSan-main\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll
+C:\Users\84382\Desktop\QLKSMAU\QuanLyKhachSan-main\DAL_KhachSan\bin\Debug\DAL_KhachSan.pdb
+C:\Users\84382\Desktop\QLKSMAU\QuanLyKhachSan-main\DAL_KhachSan\obj\Debug\DAL_KhachSan.csprojResolveAssemblyReference.cache
+C:\Users\84382\Desktop\QLKSMAU\QuanLyKhachSan-main\DAL_KhachSan\obj\Debug\DAL_KhachSan.dll
+C:\Users\84382\Desktop\QLKSMAU\QuanLyKhachSan-main\DAL_KhachSan\obj\Debug\DAL_KhachSan.pdb
