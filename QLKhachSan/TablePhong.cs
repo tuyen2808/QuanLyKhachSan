@@ -15,10 +15,12 @@ namespace QLKhachSan
 {
     public partial class TablePhong : Form
     {
+        
         public TablePhong()
         {
             InitializeComponent();
             loadtable();
+
 
         }
         void loadtable()
@@ -29,12 +31,17 @@ namespace QLKhachSan
             {
                 Button btn = new Button() { Width = TableDAO.TableWidth, Height = TableDAO.TableHeight };
                 btn.Text = item.GhiChu1;
+                btn.Name = item.MaPhong1;
+                
+                
                 //btn.Click +=btn_Click;
                 //btn.Tag = item;
                 switch (item.MaLoaiTinhTrangPhong1)
                 {
                     case "TT01":
                         btn.BackColor = Color.LightGreen;
+                        btn.Click += new EventHandler(sukienclick);
+                        
                         break;
 
                     case "TT02":
@@ -50,6 +57,18 @@ namespace QLKhachSan
         private void TablePhong_Load(object sender, EventArgs e)
         {
 
+            
+            
         }
+        private void sukienclick(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            frmDatPhong frm = new frmDatPhong();
+            
+            frm.NhanMaPhong = btn.Name;
+            frm.Show();
+        }
+
+
     }
 }

@@ -25,6 +25,10 @@ namespace DAL_KhachSan
 			}
 			qlks.SubmitChanges();
         }
+        public List<PHIEUDATPHONG> LayListPhieuDat(string maKH)
+        {
+            return (from p in qlks.PHIEUDATPHONGs where p.MaKhachHang == maKH select p).ToList();
+        }
 
 		public string LayMaDP()
 		{
@@ -78,6 +82,17 @@ namespace DAL_KhachSan
         {
             return qlks.KHACHHANGs.Select(t => t).ToList<KHACHHANG>();
         }
+        //public List<KHACHHANG> loadGVDaDat()
+        //{
+        //    return (from kh in qlks.KHACHHANGs
+        //              join dp in qlks.PHIEUDATPHONGs
+        //                  on kh.MaKhachHang equals dp.MaKhachHang
+        //              select new
+        //              {
+        //                  kh.MaKhachHang
+        //              }).ToList();
+        //}
+
         public string LayMaKH(string SDT)
         {
             string b = "";

@@ -14,10 +14,19 @@ namespace QLKhachSan
 {
     public partial class frmDatPhong : DevExpress.XtraEditors.XtraForm
     {
+        String MaPhong;// m gọi nhận phòng chi á
         public frmDatPhong()
         {
             InitializeComponent();
+            
         }
+        public String NhanMaPhong
+        {
+            get {return MaPhong;}
+
+            set { MaPhong = value;}
+        }
+
         DAL_DatPhong d = new DAL_DatPhong();
         BLThongBao bltb = new BLThongBao();
         public string maphong { get; set; }
@@ -57,19 +66,29 @@ namespace QLKhachSan
             dtNgayTao.Enabled = false;
             txtMaDP.Enabled = false;
             cbbTinhTrang.Enabled = false;
+            
 
             cbbKhachHang.Properties.DataSource = d.loadcbbKH();
             cbbKhachHang.Properties.DisplayMember = "TenKhachHang";
             cbbKhachHang.Properties.ValueMember = "MaKhachHang";
 
-			cbbPhong.Properties.DataSource = d.loadcbbP();
-			cbbPhong.Properties.DisplayMember = "MaPhong";
-			cbbPhong.Properties.ValueMember = "MaPhong";
+
+            var listpd = d.LayListPhieuDat(cbbKhachHang.EditValue.ToString());
+
+            dtgvPDP.Rows.Clear();
+            foreach (var item in listpd)
+            {
+                dtgvPDP.Rows.Add(item.MaPhieuDat, item.MaKhachHang);
+            }
+            txtPhong.Text = MaPhong;
 
 			dtNgayTao.EditValue = DateTime.Now;
             dtNgayNhan.EditValue = DateTime.Now;
             dtNgayTra.EditValue = DateTime.Now;
             txtMaDP.Text = d.LayMaDP();
+
+            
+
         }
 
         private void cbbKhachHang_EditValueChanged(object sender, EventArgs e)
@@ -98,7 +117,7 @@ namespace QLKhachSan
 
 		private void cbbPhong_EditValueChanged(object sender, EventArgs e)
 		{
-			maphong = cbbPhong.EditValue.ToString();
+			maphong = txtPhong.EditValue.ToString();
 		}
 
 		private void btnXacNhan_Click(object sender, EventArgs e)
@@ -112,7 +131,7 @@ namespace QLKhachSan
 				phieuDP.MaKhachHang = cbbKhachHang.EditValue.ToString();
 
 				chiTietDP.MaPhieuDat = txtMaDP.Text;
-				chiTietDP.MaPhong = maphong;
+                chiTietDP.MaPhong = txtPhong.Text;
 				chiTietDP.NgayLap = dtNgayTao.DateTime;
 				chiTietDP.NgayNhan = dtNgayNhan.DateTime;
 				chiTietDP.NgayTra = dtNgayTra.DateTime;
@@ -126,7 +145,21 @@ namespace QLKhachSan
 				Console.WriteLine(ex);
 				bltb.Show("Lỗi !");
 			}
+
+            
 		}
+
+        private void dtNgayTra_DateTimeChanged(object sender, EventArgs e)
+        {
+            if(dtNgayTra.DateTime < dtNgayNhan.DateTime){
+                bltb.Show("Ngày tả phải lớn hơn ngày nhận");
+            }
+        }
+
+        private void dtgvPDP_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
 
 	}
 }
