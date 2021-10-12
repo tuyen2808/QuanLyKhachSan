@@ -4,13 +4,6 @@ E:\DA\QLKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.pdb
 E:\DA\QLKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.csprojResolveAssemblyReference.cache
 E:\DA\QLKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.dll
 E:\DA\QLKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.pdb
-D:\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll.config
-D:\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll
-D:\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.pdb
-D:\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.csproj.AssemblyReference.cache
-D:\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.csproj.CoreCompileInputs.cache
-D:\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.dll
-D:\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.pdb
 C:\Users\Admin\Downloads\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll.config
 C:\Users\Admin\Downloads\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll
 C:\Users\Admin\Downloads\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.pdb
@@ -28,3 +21,8 @@ C:\Users\Admin\Desktop\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.pdb
 C:\Users\Admin\Desktop\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.dll
 C:\Users\Admin\Desktop\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.pdb
 C:\Users\Admin\Desktop\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.csprojResolveAssemblyReference.cache
+D:\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll.config
+D:\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.dll
+D:\QuanLyKhachSan\DAL_KhachSan\bin\Debug\DAL_KhachSan.pdb
+D:\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.dll
+D:\QuanLyKhachSan\DAL_KhachSan\obj\Debug\DAL_KhachSan.pdb

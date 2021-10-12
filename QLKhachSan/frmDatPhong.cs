@@ -73,13 +73,13 @@ namespace QLKhachSan
             cbbKhachHang.Properties.ValueMember = "MaKhachHang";
 
 
-            var listpd = d.LayListPhieuDat(cbbKhachHang.EditValue.ToString());
+            //var listpd = d.LayListPhieuDat(cbbKhachHang.Selected.va());
 
-            dtgvPDP.Rows.Clear();
-            foreach (var item in listpd)
-            {
-                dtgvPDP.Rows.Add(item.MaPhieuDat, item.MaKhachHang);
-            }
+            //dtgvPDP.Rows.Clear();
+            //foreach (var item in listpd)
+            //{
+            //    dtgvPDP.Rows.Add(item.MaPhieuDat, item.MaKhachHang);
+            //}
             txtPhong.Text = MaPhong;
 
 			dtNgayTao.EditValue = DateTime.Now;
