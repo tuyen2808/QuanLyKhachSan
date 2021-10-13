@@ -24,6 +24,13 @@ namespace QLKhachSan
         public string maPhong { get; set; }
         public string maKhachHang { get; set; }
         public DateTime? ngayTra { get; set; }
+        String MaPhong;
+        public String NhanMaPhong
+        {
+            get { return MaPhong; }
+
+            set { MaPhong = value; }
+        }
         public frmNhanPhong()
         {
             InitializeComponent();
@@ -54,7 +61,7 @@ namespace QLKhachSan
                 ctnp.MaPhong = maPhong != null ? maPhong : cbbChonPhong.SelectedValue.ToString();
                 ctnp.NgayNhan = dtNgayNhan.DateTime;
                 ctnp.NgayTraDuKien = dtNgaytradukien.DateTime;
-                ctnp.NgayTraThucTe = dtNgaytrathucte.DateTime;
+                ctnp.NgayTraThucTe = null;
 
                 n.ThemNhanPhong(np, ctnp);
                 bltb.Show("Nhận phòng thành công!");
@@ -79,6 +86,7 @@ namespace QLKhachSan
 
 		private void frmNhanPhong_Load(object sender, EventArgs e)
 		{
+            dtNgaytrathucte.Enabled = false;
             txtMaNhanPhong.Enabled = false;
             dtNgayNhan.EditValue = DateTime.Now;
             dtNgaytradukien.EditValue = DateTime.Now;
@@ -217,6 +225,11 @@ namespace QLKhachSan
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnXoa_Click_1(object sender, EventArgs e)
+        {
+
         }
 
        }

@@ -57,26 +57,30 @@ namespace DAL_KhachSan
 		{
 			return qlks.LOAITINHTRANGs.ToList();
 		}
-        //public void XoaPhieuDatPhong(string MaPD)
-        //{
-        //    var itemToRemove = qlks.PHIEUDATPHONGs.SingleOrDefault(x => x.MaPhieuDat == MaPD); //returns a single item.
-
-        //    if (itemToRemove != null)
-        //    {
-        //        qlks.PHIEUDATPHONGs.Remove(itemToRemove);
-        //        qlks.SaveChanges();
-        //    }
-        //}
-        //public void XoaCTDatPhong(string MaPD, string MaLoaiPhong)
-        //{
-        //    var itemToRemove = qlks.CHITIETDATPHONGs.SingleOrDefault(x => x.MaPhieuDat == MaPD && x.MaPhong == MaPhong); //returns a single item.
-
-        //    if (itemToRemove != null)
-        //    {
-        //        qlks.CHITIETDATPHONGs.Remove(itemToRemove);
-        //        qlks.SaveChanges();
-        //    }
-        //}
+        public void XoaPhieuDP(string maDP)
+        {
+            var itemRemove = qlks.PHIEUDATPHONGs.SingleOrDefault(x => x.MaPhieuDat == maDP);
+            if (itemRemove != null)
+            {
+                qlks.CHITIETDATPHONGs.DeleteAllOnSubmit(itemRemove.CHITIETDATPHONGs);
+                //PHONG p = (from ph in qlks.PHONGs where ph.MaPhong == itemRemove.CHITIETDATPHONGs.MaPhong select ph).SingleOrDefault();
+                //if (p != null)
+                //{
+                //    p.LOAITINHTRANG = qlks.LOAITINHTRANGs.SingleOrDefault(x => x.MaLoaiTinhTrangPhong == "TT01");
+                //    p.MaLoaiTinhTrangPhong = "TT01";
+                //}
+                foreach (var item in itemRemove.NHANPHONGs)
+                {
+                    qlks.CHITETNHANPHONGs.DeleteAllOnSubmit(item.CHITETNHANPHONGs);
+                }
+                qlks.NHANPHONGs.DeleteAllOnSubmit(itemRemove.NHANPHONGs);
+                qlks.SubmitChanges();
+                qlks.PHIEUDATPHONGs.DeleteOnSubmit(itemRemove);
+                
+                qlks.SubmitChanges();
+            }
+        }
+        
         //================================= Khách Hàng ========================================
         public List<KHACHHANG> loadcbbKH()
         {
@@ -92,120 +96,123 @@ namespace DAL_KhachSan
         //                  kh.MaKhachHang
         //              }).ToList();
         //}
+        public KHACHHANG LayThongTinKhachHang(string SDT)
+        {
+            return qlks.KHACHHANGs.FirstOrDefault(x => x.DienThoai == SDT);
+        }
+        //public string LayMaKH(string SDT)
+        //{
+        //    string b = "";
+        //    var Ma = (from p in qlks.KHACHHANGs
+        //              where p.DienThoai == SDT
+        //              select new
+        //              {
+        //                  p.MaKhachHang
+        //              }).ToList();
+        //    if (Ma.Count() != 0)
+        //    {
+        //        foreach (var a in Ma)
+        //            b = a.MaKhachHang;
+        //    }
+        //    return b;
+        //}      
+        //public string LayDCKH(string MaKH)
+        //{
+        //    string b = "";
+        //    var Ma = (from p in qlks.KHACHHANGs
+        //              where p.MaKhachHang == MaKH
+        //              select new
+        //              {
+        //                  p.DiaChi
+        //              }).ToList();
+        //    if (Ma.Count() != 0)
+        //    {
+        //        foreach (var a in Ma)
+        //            b = a.DiaChi;
+        //    }
+        //    return b;
+        //}
+        //public string LaySoCMND(string MaKH)
+        //{
+        //    string b = "";
+        //    var Ma = (from p in qlks.KHACHHANGs
+        //              where p.MaKhachHang == MaKH
+        //              select new
+        //              {
+        //                  p.CMND
+        //              }).ToList();
+        //    if (Ma.Count() != 0)
+        //    {
+        //        foreach (var a in Ma)
+        //            b = a.CMND;
+        //    }
+        //    return b;
+        //}
+        //public string LaySDTKH(string MaKH)
+        //{
+        //    string b = "";
+        //    var Ma = (from p in qlks.KHACHHANGs
+        //              where p.MaKhachHang == MaKH
+        //              select new
+        //              {
+        //                  p.DienThoai
+        //              }).ToList();
+        //    if (Ma.Count() != 0)
+        //    {
+        //        foreach (var a in Ma)
+        //            b = a.DienThoai;
+        //    }
+        //    return b;
+        //}
 
-        public string LayMaKH(string SDT)
-        {
-            string b = "";
-            var Ma = (from p in qlks.KHACHHANGs
-                      where p.DienThoai == SDT
-                      select new
-                      {
-                          p.MaKhachHang
-                      }).ToList();
-            if (Ma.Count() != 0)
-            {
-                foreach (var a in Ma)
-                    b = a.MaKhachHang;
-            }
-            return b;
-        }      
-        public string LayDCKH(string MaKH)
-        {
-            string b = "";
-            var Ma = (from p in qlks.KHACHHANGs
-                      where p.MaKhachHang == MaKH
-                      select new
-                      {
-                          p.DiaChi
-                      }).ToList();
-            if (Ma.Count() != 0)
-            {
-                foreach (var a in Ma)
-                    b = a.DiaChi;
-            }
-            return b;
-        }
-        public string LaySoCMND(string MaKH)
-        {
-            string b = "";
-            var Ma = (from p in qlks.KHACHHANGs
-                      where p.MaKhachHang == MaKH
-                      select new
-                      {
-                          p.CMND
-                      }).ToList();
-            if (Ma.Count() != 0)
-            {
-                foreach (var a in Ma)
-                    b = a.CMND;
-            }
-            return b;
-        }
-        public string LaySDTKH(string MaKH)
-        {
-            string b = "";
-            var Ma = (from p in qlks.KHACHHANGs
-                      where p.MaKhachHang == MaKH
-                      select new
-                      {
-                          p.DienThoai
-                      }).ToList();
-            if (Ma.Count() != 0)
-            {
-                foreach (var a in Ma)
-                    b = a.DienThoai;
-            }
-            return b;
-        }
-
-        public string LayGTKH(string MaKH)
-        {
-            string b = "";
-            var Ma = (from p in qlks.KHACHHANGs
-                      where p.MaKhachHang == MaKH
-                      select new
-                      {
-                          p.GioiTinh
-                      }).ToList();
-            if (Ma.Count() != 0)
-            {
-                foreach (var a in Ma)
-                    b = a.GioiTinh;
-            }
-            return b;
-        }
-        public string LayNgaySinh(string MaKH)
-        {
-            string b = "";
-            var Ma = (from p in qlks.KHACHHANGs
-                      where p.MaKhachHang == MaKH
-                      select new
-                      {
-                          p.NgaySinh
-                      }).ToList();
-            if (Ma.Count() != 0)
-            {
-                foreach (var a in Ma)
-                    b = a.NgaySinh.ToString().Substring(0, 10);
-            }
-            return b;
-        }
-        public string LayQuocTich(string MaKH)
-        {
-            string b = "";
-            var Ma = (from p in qlks.KHACHHANGs
-                      where p.MaKhachHang == MaKH
-                      select new
-                      {
-                          p.QuocTich
-                      }).ToList();
-            if (Ma.Count() != 0)
-            {
-                foreach (var a in Ma)
-                    b = a.QuocTich;
-            }
-            return b;
-        }
+        //public string LayGTKH(string MaKH)
+        //{
+        //    string b = "";
+        //    var Ma = (from p in qlks.KHACHHANGs
+        //              where p.MaKhachHang == MaKH
+        //              select new
+        //              {
+        //                  p.GioiTinh
+        //              }).ToList();
+        //    if (Ma.Count() != 0)
+        //    {
+        //        foreach (var a in Ma)
+        //            b = a.GioiTinh;
+        //    }
+        //    return b;
+        //}
+        //public string LayNgaySinh(string MaKH)
+        //{
+        //    string b = "";
+        //    var Ma = (from p in qlks.KHACHHANGs
+        //              where p.MaKhachHang == MaKH
+        //              select new
+        //              {
+        //                  p.NgaySinh
+        //              }).ToList();
+        //    if (Ma.Count() != 0)
+        //    {
+        //        foreach (var a in Ma)
+        //            b = a.NgaySinh.ToString().Substring(0, 10);
+        //    }
+        //    return b;
+        //}
+        //public string LayQuocTich(string MaKH)
+        //{
+        //    string b = "";
+        //    var Ma = (from p in qlks.KHACHHANGs
+        //              where p.MaKhachHang == MaKH
+        //              select new
+        //              {
+        //                  p.QuocTich
+        //              }).ToList();
+        //    if (Ma.Count() != 0)
+        //    {
+        //        foreach (var a in Ma)
+        //            b = a.QuocTich;
+        //    }
+        //    return b;
+        //}
         //================================= Loại Phòng ========================================
         //public string LayGiaLoaiPhong(string MaLoaiPhong)
         //    {

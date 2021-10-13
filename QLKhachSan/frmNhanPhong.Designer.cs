@@ -119,9 +119,9 @@
             this.btnHuy.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnHuy.Appearance.Options.UseFont = true;
             this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
-            this.btnHuy.Location = new System.Drawing.Point(992, 28);
+            this.btnHuy.Location = new System.Drawing.Point(992, 44);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(75, 39);
+            this.btnHuy.Size = new System.Drawing.Size(84, 39);
             this.btnHuy.TabIndex = 4;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -131,22 +131,24 @@
             this.btnXoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnXoa.Appearance.Options.UseFont = true;
             this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
-            this.btnXoa.Location = new System.Drawing.Point(526, 28);
+            this.btnXoa.Location = new System.Drawing.Point(529, 44);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 39);
+            this.btnXoa.Size = new System.Drawing.Size(93, 39);
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click_1);
             // 
             // btnThem
             // 
             this.btnThem.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnThem.Appearance.Options.UseFont = true;
             this.btnThem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.ImageOptions.Image")));
-            this.btnThem.Location = new System.Drawing.Point(186, 28);
+            this.btnThem.Location = new System.Drawing.Point(186, 44);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(106, 39);
             this.btnThem.TabIndex = 0;
             this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // groupControl4
             // 
@@ -322,6 +324,7 @@
             // 
             // groupControl3
             // 
+            this.groupControl3.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl3.CaptionImageOptions.Image")));
             this.groupControl3.Controls.Add(this.btnHuy);
             this.groupControl3.Controls.Add(this.btnXoa);
             this.groupControl3.Controls.Add(this.btnThem);
