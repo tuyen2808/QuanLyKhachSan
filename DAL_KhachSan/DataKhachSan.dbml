@@ -24,8 +24,6 @@
     <Type Name="CHITETNHANPHONG">
       <Column Name="MaNhanPhong" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaPhong" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HoTenKhachHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CMND" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
       <Column Name="NgayNhan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="NgayTraDuKien" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="NgayTraThucTe" Type="System.DateTime" DbType="Date" CanBeNull="true" />

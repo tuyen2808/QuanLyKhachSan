@@ -745,10 +745,6 @@ namespace DAL_KhachSan
 		
 		private string _MaPhong;
 		
-		private string _HoTenKhachHang;
-		
-		private string _CMND;
-		
 		private System.Nullable<System.DateTime> _NgayNhan;
 		
 		private System.Nullable<System.DateTime> _NgayTraDuKien;
@@ -767,10 +763,6 @@ namespace DAL_KhachSan
     partial void OnMaNhanPhongChanged();
     partial void OnMaPhongChanging(string value);
     partial void OnMaPhongChanged();
-    partial void OnHoTenKhachHangChanging(string value);
-    partial void OnHoTenKhachHangChanged();
-    partial void OnCMNDChanging(string value);
-    partial void OnCMNDChanged();
     partial void OnNgayNhanChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayNhanChanged();
     partial void OnNgayTraDuKienChanging(System.Nullable<System.DateTime> value);
@@ -830,46 +822,6 @@ namespace DAL_KhachSan
 					this._MaPhong = value;
 					this.SendPropertyChanged("MaPhong");
 					this.OnMaPhongChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTenKhachHang", DbType="NVarChar(50)")]
-		public string HoTenKhachHang
-		{
-			get
-			{
-				return this._HoTenKhachHang;
-			}
-			set
-			{
-				if ((this._HoTenKhachHang != value))
-				{
-					this.OnHoTenKhachHangChanging(value);
-					this.SendPropertyChanging();
-					this._HoTenKhachHang = value;
-					this.SendPropertyChanged("HoTenKhachHang");
-					this.OnHoTenKhachHangChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CMND", DbType="VarChar(12)")]
-		public string CMND
-		{
-			get
-			{
-				return this._CMND;
-			}
-			set
-			{
-				if ((this._CMND != value))
-				{
-					this.OnCMNDChanging(value);
-					this.SendPropertyChanging();
-					this._CMND = value;
-					this.SendPropertyChanged("CMND");
-					this.OnCMNDChanged();
 				}
 			}
 		}

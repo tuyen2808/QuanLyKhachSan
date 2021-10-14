@@ -46,6 +46,7 @@ namespace QLKhachSan
 
                     case "TT02":
                         btn.BackColor = Color.Aqua;
+                        btn.Click += new EventHandler(sukienclick1);
                         break;
                     default:
                         btn.BackColor = Color.BlueViolet;
@@ -65,6 +66,14 @@ namespace QLKhachSan
             Button btn = (Button)sender;
             frmDatPhong frm = new frmDatPhong();
             
+            frm.NhanMaPhong = btn.Name;
+            frm.Show();
+        }
+        private void sukienclick1(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            frmNhanPhong frm = new frmNhanPhong();
+
             frm.NhanMaPhong = btn.Name;
             frm.Show();
         }

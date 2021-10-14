@@ -14,7 +14,7 @@ namespace QLKhachSan
 {
     public partial class frmDatPhong : DevExpress.XtraEditors.XtraForm
     {
-        String MaPhong;// m gọi nhận phòng chi á
+        String MaPhong;
         public frmDatPhong()
         {
             InitializeComponent();
@@ -31,6 +31,7 @@ namespace QLKhachSan
         BLThongBao bltb = new BLThongBao();
         public string maphong { get; set; }
         public string madatphong { get; set; }
+        public string maKhachHang { get; set; }
         private void labelControl5_Click(object sender, EventArgs e)
         {
 
@@ -51,7 +52,7 @@ namespace QLKhachSan
             frmQLKhachHang qlncc = new frmQLKhachHang();
             qlncc.ShowDialog();
             qlncc.Hide();
-            cbbKhachHang.Properties.DataSource = d.loadcbbKH();
+            txtTenKH.ResetText();
 
             txtDiaChi.ResetText();
             txtSDT.ResetText();
@@ -68,18 +69,12 @@ namespace QLKhachSan
             cbbTinhTrang.Enabled = false;
             
 
-            cbbKhachHang.Properties.DataSource = d.loadcbbKH();
-            cbbKhachHang.Properties.DisplayMember = "TenKhachHang";
-            cbbKhachHang.Properties.ValueMember = "MaKhachHang";
+            //cbbKhachHang.Properties.DataSource = d.loadcbbKH();
+            //cbbKhachHang.Properties.DisplayMember = "TenKhachHang";
+            //cbbKhachHang.Properties.ValueMember = "MaKhachHang";
 
 
-            //var listpd = d.LayListPhieuDat(cbbKhachHang.Selected.va());
-
-            //dtgvPDP.Rows.Clear();
-            //foreach (var item in listpd)
-            //{
-            //    dtgvPDP.Rows.Add(item.MaPhieuDat, item.MaKhachHang);
-            //}
+            
             txtPhong.Text = MaPhong;
 
 			dtNgayTao.EditValue = DateTime.Now;
@@ -93,21 +88,22 @@ namespace QLKhachSan
 
         private void cbbKhachHang_EditValueChanged(object sender, EventArgs e)
         {
-            txtSDT.Text = d.LaySDTKH(cbbKhachHang.EditValue.ToString());
-            txtDiaChi.Text = d.LayDCKH(cbbKhachHang.EditValue.ToString());
-            txtNgaySinh.Text = d.LayNgaySinh(cbbKhachHang.EditValue.ToString());
-            txtQuocTich.Text = d.LayQuocTich(cbbKhachHang.EditValue.ToString());
-            txtCMND.Text = d.LaySoCMND(cbbKhachHang.EditValue.ToString());
-            if (d.LayGTKH(cbbKhachHang.EditValue.ToString()) == "Nam")
-                rdoNam.Checked = true;
-            else
-                rdoNu.Checked = true;
+            //txtSDT.Text = d.LaySDTKH(cbbKhachHang.EditValue.ToString());
+            //txtDiaChi.Text = d.LayDCKH(cbbKhachHang.EditValue.ToString());
+            //txtNgaySinh.Text = d.LayNgaySinh(cbbKhachHang.EditValue.ToString());
+            //txtQuocTich.Text = d.LayQuocTich(cbbKhachHang.EditValue.ToString());
+            //txtCMND.Text = d.LaySoCMND(cbbKhachHang.EditValue.ToString());
+            //if (d.LayGTKH(cbbKhachHang.EditValue.ToString()) == "Nam")
+            //    rdoNam.Checked = true;
+            //else
+            //    rdoNu.Checked = true;
          
         }
 
         private void txtSDT_EditValueChanged(object sender, EventArgs e)
         {
-            cbbKhachHang.EditValue = d.LayMaKH(txtSDT.Text);
+            //cbbKhachHang.EditValue = d.LayMaKH(txtSDT.Text);
+            
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -128,7 +124,7 @@ namespace QLKhachSan
 				var chiTietDP = new CHITIETDATPHONG();
 
 				phieuDP.MaPhieuDat = txtMaDP.Text;
-				phieuDP.MaKhachHang = cbbKhachHang.EditValue.ToString();
+                phieuDP.MaKhachHang = maKhachHang; ;
 
 				chiTietDP.MaPhieuDat = txtMaDP.Text;
                 chiTietDP.MaPhong = txtPhong.Text;
@@ -139,6 +135,12 @@ namespace QLKhachSan
 
 				d.ThemPD(phieuDP, chiTietDP);
 				bltb.Show("Thêm Phiếu Thành Công!");
+                var listpd = d.LayListPhieuDat(maKhachHang);
+                dtgvPDP.Rows.Clear();
+                foreach (var item in listpd)
+                {
+                    dtgvPDP.Rows.Add(item.MaPhieuDat, item.MaKhachHang);
+                }
 			}
 			catch(Exception ex)
 			{
@@ -159,6 +161,75 @@ namespace QLKhachSan
         private void dtgvPDP_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnTimKH_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtSDT.Text))
+            {
+                var khachHang = d.LayThongTinKhachHang(txtSDT.Text);
+                if (khachHang != null)
+                {
+                    maKhachHang = khachHang.MaKhachHang;
+                    txtTenKH.Text = khachHang.TenKhachHang;
+                    txtCMND.Text = khachHang.CMND;
+                    if (khachHang.GioiTinh == "Nam")
+                    {
+                        rdoNam.Checked = true;
+                    }
+                    else
+                    {
+                        rdoNu.Checked = true;
+                    }
+                    txtNgaySinh.Text = khachHang.NgaySinh.ToString();
+                    txtDiaChi.Text = khachHang.DiaChi;
+                    txtQuocTich.Text = khachHang.QuocTich;
+
+
+                    var listpd = d.LayListPhieuDat(maKhachHang);
+                    dtgvPDP.Rows.Clear();
+                    foreach (var item in listpd)
+                    {
+                        dtgvPDP.Rows.Add(item.MaPhieuDat, item.MaKhachHang);
+                    }
+                    dtgvPDP.ClearSelection();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy khách hàng!");
+                    txtSDT.ResetText();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa nhập số điện thoại!");
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Chắc chắn xóa?", "Thông báo!",
+                                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                d.XoaPhieuDP(madatphong);
+                var listpd = d.LayListPhieuDat(maKhachHang);
+                dtgvPDP.Rows.Clear();
+                foreach (var item in listpd)
+                {
+                    dtgvPDP.Rows.Add(item.MaPhieuDat, item.MaKhachHang);
+                }
+            }
+        }
+
+        private void dtgvPDP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtgvPDP_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            madatphong = dtgvPDP.SelectedRows[0].Cells[0].Value.ToString();
         }
 
 	}

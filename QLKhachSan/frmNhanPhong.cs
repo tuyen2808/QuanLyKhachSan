@@ -24,6 +24,13 @@ namespace QLKhachSan
         public string maPhong { get; set; }
         public string maKhachHang { get; set; }
         public DateTime? ngayTra { get; set; }
+        String MaPhong;
+        public String NhanMaPhong
+        {
+            get { return MaPhong; }
+
+            set { MaPhong = value; }
+        }
         public frmNhanPhong()
         {
             InitializeComponent();
@@ -54,7 +61,7 @@ namespace QLKhachSan
                 ctnp.MaPhong = maPhong != null ? maPhong : cbbChonPhong.SelectedValue.ToString();
                 ctnp.NgayNhan = dtNgayNhan.DateTime;
                 ctnp.NgayTraDuKien = dtNgaytradukien.DateTime;
-                ctnp.NgayTraThucTe = dtNgaytrathucte.DateTime;
+                ctnp.NgayTraThucTe = null;
 
                 n.ThemNhanPhong(np, ctnp);
                 bltb.Show("Nhận phòng thành công!");
@@ -69,6 +76,7 @@ namespace QLKhachSan
                 {
                     dtgvPNP.Rows.Add(item.MaNhanPhong, item.MaPhieuDat, item.MaKhachHang);
                 }
+                dtgvPNP.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -79,6 +87,7 @@ namespace QLKhachSan
 
 		private void frmNhanPhong_Load(object sender, EventArgs e)
 		{
+            dtNgaytrathucte.Enabled = false;
             txtMaNhanPhong.Enabled = false;
             dtNgayNhan.EditValue = DateTime.Now;
             dtNgaytradukien.EditValue = DateTime.Now;
@@ -149,19 +158,13 @@ namespace QLKhachSan
                 {
                     dtgvPNP.Rows.Add(item.MaNhanPhong, item.MaPhieuDat, item.MaKhachHang);
                 }
+                dtgvPNP.ClearSelection();
             }
 		}
 
         private void txtMaNhanPhong_EditValueChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void dtgvPNP_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int rowSelect = dtgvPDP.CurrentCell.RowIndex;
-            var maPn = dtgvPNP.Rows[rowSelect].Cells[0].Value.ToString();
-            maPhieuNhan = maPn;
         }
 
         private void btnTimKH_Click(object sender, EventArgs e)
@@ -201,6 +204,7 @@ namespace QLKhachSan
 					{
 						dtgvPNP.Rows.Add(item.MaNhanPhong, item.MaPhieuDat, item.MaKhachHang);
 					}
+                    dtgvPNP.ClearSelection();
 				}
 				else
 				{
@@ -217,6 +221,12 @@ namespace QLKhachSan
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dtgvPNP_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var maPn = dtgvPNP.SelectedRows[0].Cells[0].Value.ToString();
+            maPhieuNhan = maPn;
         }
 
        }

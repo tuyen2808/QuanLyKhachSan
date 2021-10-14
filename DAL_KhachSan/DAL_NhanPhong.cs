@@ -84,10 +84,17 @@ namespace DAL_KhachSan
         public void XoaPhieuNP(string maPN)
         {
             var itemRemove = qlks.NHANPHONGs.SingleOrDefault(x => x.MaNhanPhong == maPN);
-
             if (itemRemove != null)
             {
+                // Trả lại trạng thái cho phòng
+                foreach (var chiTiet in itemRemove.CHITETNHANPHONGs)
+                {
+                    chiTiet.PHONG.MaLoaiTinhTrangPhong = "TT01"; 
+                }
+                qlks.SubmitChanges();
+
                 qlks.CHITETNHANPHONGs.DeleteAllOnSubmit(itemRemove.CHITETNHANPHONGs);
+                qlks.SUDUNGDICHVUs.DeleteAllOnSubmit(itemRemove.SUDUNGDICHVUs);
                 qlks.NHANPHONGs.DeleteOnSubmit(itemRemove);
                 qlks.SubmitChanges();
             }
