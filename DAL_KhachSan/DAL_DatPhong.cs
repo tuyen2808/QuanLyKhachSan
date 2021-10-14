@@ -75,8 +75,8 @@ namespace DAL_KhachSan
                 {
                     qlks.CHITETNHANPHONGs.DeleteAllOnSubmit(item.CHITETNHANPHONGs);
                 }
-                qlks.NHANPHONGs.DeleteAllOnSubmit(itemRemove.NHANPHONGs);
                 // Xóa hóa đơn liên quan
+                qlks.NHANPHONGs.DeleteAllOnSubmit(itemRemove.NHANPHONGs);
 
                 qlks.SubmitChanges();
                 qlks.PHIEUDATPHONGs.DeleteOnSubmit(itemRemove);
