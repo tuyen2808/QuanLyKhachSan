@@ -15,13 +15,14 @@ namespace QLKhachSan
 {
     public partial class TablePhong : Form
     {
-        
+        DAL_DichVu dal_dv = new DAL_DichVu();
+        DAL_NhanPhong n = new DAL_NhanPhong();
+        public static bool flag = false;
+        public static string maphong = "";
         public TablePhong()
         {
             InitializeComponent();
             loadtable();
-
-
         }
         void loadtable()
         {
@@ -41,15 +42,15 @@ namespace QLKhachSan
                     case "TT01":
                         btn.BackColor = Color.LightGreen;
                         btn.Click += new EventHandler(sukienclick);
-                        
                         break;
 
                     case "TT02":
                         btn.BackColor = Color.Aqua;
-                        btn.Click += new EventHandler(sukienclick1);
+                        btn.Click += new EventHandler(sukienclick2);
                         break;
                     default:
                         btn.BackColor = Color.BlueViolet;
+                        btn.Click += new EventHandler(sukienclick3);
                         break;
                 }
                 flowLayoutPanel1.Controls.Add(btn);
@@ -57,27 +58,63 @@ namespace QLKhachSan
         }
         private void TablePhong_Load(object sender, EventArgs e)
         {
-
-            
-            
+            cbbLoaiDV.DataSource = dal_dv.LayLoaiDV();
+            cbbLoaiDV.DisplayMember = "Tên Loại Dịch Vụ";
+            cbbLoaiDV.ValueMember = "Mã Loại Dịch Vụ";
+            var listP = n.loadcbbP();
+            cbbPhongDoi.DataSource = listP;
+            cbbPhongDoi.DisplayMember = "GhiChu";
+            cbbPhongDoi.ValueMember = "MaPhong";
         }
         private void sukienclick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            frmDatPhong frm = new frmDatPhong();
-            
-            frm.NhanMaPhong = btn.Name;
+            maphong = btn.Name;
+            flag = false;
+            frmNhanPhong frm = new frmNhanPhong();
             frm.Show();
+            this.Hide();
         }
-        private void sukienclick1(object sender, EventArgs e)
+        
+        private void sukienclick2(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
+            maphong = btn.Name;
+            flag = true;
             frmNhanPhong frm = new frmNhanPhong();
-
-            frm.NhanMaPhong = btn.Name;
             frm.Show();
+            this.Hide();
         }
 
+        private void sukienclick3(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            txtPCD.Text = btn.Text;
+        }
 
+        private void cbbLoaiDV_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cbbDV.DataSource = dal_dv.LayDVTheoLoai(cbbLoaiDV.SelectedValue.ToString());
+                cbbDV.DisplayMember = "Tên Dịch Vụ";
+                cbbDV.ValueMember = "Mã Dịch Vụ";
+            }
+            catch { }
+        }
+
+        private void txtSL_ValueChanged(object sender, EventArgs e)
+        {
+            if (txtSL.Value <= 0)
+            {
+                txtSL.Value = 1;
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+
+        }
     }
 }

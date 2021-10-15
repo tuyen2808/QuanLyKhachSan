@@ -10,6 +10,7 @@ namespace QLKhachSan
 {
     static class Program
     {
+        public static TablePhong phong = new TablePhong();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -17,12 +18,12 @@ namespace QLKhachSan
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            //Application.SetCompatibleTextRenderingDefault(false);
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Application.Run(new frmNhanPhong());
+            Application.Run(phong);
         }
     }
 }

@@ -49,8 +49,6 @@
             this.MaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtNgaytradukien = new DevExpress.XtraEditors.DateEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.dtNgaytrathucte = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.cbbChonPhong = new System.Windows.Forms.ComboBox();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.colMaPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +77,8 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.txtSL = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCTPD)).BeginInit();
@@ -87,8 +87,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPNP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgaytradukien.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgaytradukien.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgaytrathucte.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgaytrathucte.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -104,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNhanPhong.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayNhan.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayNhan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSL)).BeginInit();
             this.SuspendLayout();
             // 
             // colMaKH
@@ -119,9 +118,9 @@
             this.btnHuy.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnHuy.Appearance.Options.UseFont = true;
             this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
-            this.btnHuy.Location = new System.Drawing.Point(992, 44);
+            this.btnHuy.Location = new System.Drawing.Point(992, 28);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(84, 39);
+            this.btnHuy.Size = new System.Drawing.Size(115, 39);
             this.btnHuy.TabIndex = 4;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -131,21 +130,20 @@
             this.btnXoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnXoa.Appearance.Options.UseFont = true;
             this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
-            this.btnXoa.Location = new System.Drawing.Point(529, 44);
+            this.btnXoa.Location = new System.Drawing.Point(526, 28);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(93, 39);
+            this.btnXoa.Size = new System.Drawing.Size(115, 39);
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "Xóa";
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThem
             // 
             this.btnThem.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnThem.Appearance.Options.UseFont = true;
             this.btnThem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.ImageOptions.Image")));
-            this.btnThem.Location = new System.Drawing.Point(186, 44);
+            this.btnThem.Location = new System.Drawing.Point(186, 28);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(106, 39);
+            this.btnThem.Size = new System.Drawing.Size(115, 39);
             this.btnThem.TabIndex = 0;
             this.btnThem.Text = "Thêm";
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -239,14 +237,12 @@
             this.MaPD,
             this.MaKH});
             this.dtgvPNP.Location = new System.Drawing.Point(14, 45);
-            this.dtgvPNP.MultiSelect = false;
             this.dtgvPNP.Name = "dtgvPNP";
             this.dtgvPNP.RowHeadersWidth = 51;
             this.dtgvPNP.RowTemplate.Height = 24;
-            this.dtgvPNP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvPNP.Size = new System.Drawing.Size(313, 223);
             this.dtgvPNP.TabIndex = 0;
-            this.dtgvPNP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPNP_CellClick);
+            this.dtgvPNP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPNP_CellContentClick);
             // 
             // colMaNP
             // 
@@ -283,6 +279,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtNgaytradukien.Size = new System.Drawing.Size(333, 22);
             this.dtNgaytradukien.TabIndex = 26;
+            this.dtNgaytradukien.EditValueChanged += new System.EventHandler(this.dtNgaytradukien_EditValueChanged);
             // 
             // labelControl11
             // 
@@ -294,39 +291,17 @@
             this.labelControl11.TabIndex = 25;
             this.labelControl11.Text = "Ngày trả dự kiến";
             // 
-            // dtNgaytrathucte
-            // 
-            this.dtNgaytrathucte.EditValue = null;
-            this.dtNgaytrathucte.Location = new System.Drawing.Point(581, 452);
-            this.dtNgaytrathucte.Name = "dtNgaytrathucte";
-            this.dtNgaytrathucte.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgaytrathucte.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtNgaytrathucte.Size = new System.Drawing.Size(333, 22);
-            this.dtNgaytrathucte.TabIndex = 24;
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Location = new System.Drawing.Point(581, 423);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(139, 23);
-            this.labelControl10.TabIndex = 23;
-            this.labelControl10.Text = "Ngày trả thực tế";
-            // 
             // cbbChonPhong
             // 
+            this.cbbChonPhong.Enabled = false;
             this.cbbChonPhong.FormattingEnabled = true;
             this.cbbChonPhong.Location = new System.Drawing.Point(872, 9);
             this.cbbChonPhong.Name = "cbbChonPhong";
-            this.cbbChonPhong.Size = new System.Drawing.Size(221, 24);
+            this.cbbChonPhong.Size = new System.Drawing.Size(369, 24);
             this.cbbChonPhong.TabIndex = 28;
             // 
             // groupControl3
             // 
-            this.groupControl3.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl3.CaptionImageOptions.Image")));
             this.groupControl3.Controls.Add(this.btnHuy);
             this.groupControl3.Controls.Add(this.btnXoa);
             this.groupControl3.Controls.Add(this.btnThem);
@@ -448,8 +423,10 @@
             // 
             this.txtSDT.Location = new System.Drawing.Point(191, 54);
             this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Properties.MaxLength = 12;
             this.txtSDT.Size = new System.Drawing.Size(291, 22);
             this.txtSDT.TabIndex = 12;
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // txtDiaChi
             // 
@@ -469,8 +446,10 @@
             // 
             this.txtCMND.Location = new System.Drawing.Point(191, 163);
             this.txtCMND.Name = "txtCMND";
+            this.txtCMND.Properties.MaxLength = 12;
             this.txtCMND.Size = new System.Drawing.Size(291, 22);
             this.txtCMND.TabIndex = 9;
+            this.txtCMND.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // btnThemKH
             // 
@@ -563,6 +542,7 @@
             // dtNgayNhan
             // 
             this.dtNgayNhan.EditValue = null;
+            this.dtNgayNhan.Enabled = false;
             this.dtNgayNhan.Location = new System.Drawing.Point(117, 9);
             this.dtNgayNhan.Name = "dtNgayNhan";
             this.dtNgayNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -602,17 +582,41 @@
             this.labelControl12.TabIndex = 27;
             this.labelControl12.Text = "Chọn phòng";
             // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.Location = new System.Drawing.Point(581, 414);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(74, 23);
+            this.labelControl10.TabIndex = 29;
+            this.labelControl10.Text = "Số người";
+            // 
+            // txtSL
+            // 
+            this.txtSL.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSL.Location = new System.Drawing.Point(698, 413);
+            this.txtSL.Name = "txtSL";
+            this.txtSL.Size = new System.Drawing.Size(216, 30);
+            this.txtSL.TabIndex = 30;
+            this.txtSL.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtSL.ValueChanged += new System.EventHandler(this.txtSL_ValueChanged);
+            // 
             // frmNhanPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1259, 596);
+            this.Controls.Add(this.txtSL);
+            this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl5);
             this.Controls.Add(this.dtNgaytradukien);
             this.Controls.Add(this.labelControl11);
-            this.Controls.Add(this.dtNgaytrathucte);
-            this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.cbbChonPhong);
             this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.groupControl2);
@@ -623,7 +627,9 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.labelControl12);
             this.Name = "frmNhanPhong";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhận Phòng";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmNhanPhong_FormClosed);
             this.Load += new System.EventHandler(this.frmNhanPhong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
@@ -633,8 +639,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPNP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgaytradukien.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgaytradukien.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgaytrathucte.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNgaytrathucte.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -651,6 +655,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNhanPhong.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayNhan.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayNhan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSL)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -677,8 +682,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKH;
         private DevExpress.XtraEditors.DateEdit dtNgaytradukien;
         private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.DateEdit dtNgaytrathucte;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
         private System.Windows.Forms.ComboBox cbbChonPhong;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaPD;
@@ -707,6 +710,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private System.Windows.Forms.NumericUpDown txtSL;
 
     }
 }

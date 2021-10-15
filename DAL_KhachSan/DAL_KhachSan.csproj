@@ -42,11 +42,9 @@
   <ItemGroup>
     <Compile Include="ConText.cs" />
     <Compile Include="DAL_DatPhong.cs" />
+    <Compile Include="DAL_DichVu.cs" />
     <Compile Include="DAL_NhanPhong.cs" />
     <Compile Include="DAL_QLKhachHang.cs" />
-    <Compile Include="DataKhachSan.cs">
-      <DependentUpon>DataKhachSan.dbml</DependentUpon>
-    </Compile>
     <Compile Include="DataKhachSan.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

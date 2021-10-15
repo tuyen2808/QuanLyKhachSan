@@ -49,12 +49,12 @@ namespace DAL_KhachSan
         }
         public void ThemNhanPhong(NHANPHONG np, CHITETNHANPHONG ctnp)
         {
+            qlks.Refresh(System.Data.Linq.RefreshMode.KeepChanges, qlks.PHONGs);
             qlks.NHANPHONGs.InsertOnSubmit(np);
             qlks.CHITETNHANPHONGs.InsertOnSubmit(ctnp);
-            PHONG p = (from ph in qlks.PHONGs where ph.MaPhong == ctnp.MaPhong select ph).Single();
+            PHONG p = (from ph in qlks.PHONGs where ph.MaPhong == ctnp.MaPhong select ph).SingleOrDefault();
             if (p != null)
             {
-                p.LOAITINHTRANG = qlks.LOAITINHTRANGs.SingleOrDefault(x => x.MaLoaiTinhTrangPhong == "TT03");
                 p.MaLoaiTinhTrangPhong = "TT03";
             }
             qlks.SubmitChanges();
@@ -84,20 +84,26 @@ namespace DAL_KhachSan
         public void XoaPhieuNP(string maPN)
         {
             var itemRemove = qlks.NHANPHONGs.SingleOrDefault(x => x.MaNhanPhong == maPN);
+
             if (itemRemove != null)
             {
-                // Trả lại trạng thái cho phòng
-                foreach (var chiTiet in itemRemove.CHITETNHANPHONGs)
-                {
-                    chiTiet.PHONG.MaLoaiTinhTrangPhong = "TT01"; 
-                }
-                qlks.SubmitChanges();
-
                 qlks.CHITETNHANPHONGs.DeleteAllOnSubmit(itemRemove.CHITETNHANPHONGs);
-                qlks.SUDUNGDICHVUs.DeleteAllOnSubmit(itemRemove.SUDUNGDICHVUs);
                 qlks.NHANPHONGs.DeleteOnSubmit(itemRemove);
                 qlks.SubmitChanges();
             }
+        }
+
+        public KHACHHANG LayDSDatPhong(string maphong)
+        {
+            try
+            {
+                CHITIETDATPHONG dsctdp = qlks.CHITIETDATPHONGs.Where(x => x.MaPhong == maphong).Where(x => x.NgayTra == null || x.NgayTra.Value > DateTime.Now).FirstOrDefault();
+                PHIEUDATPHONG dsdp = qlks.PHIEUDATPHONGs.SingleOrDefault(x => x.MaPhieuDat == dsctdp.MaPhieuDat);
+                KHACHHANG kh = qlks.KHACHHANGs.SingleOrDefault(x => x.MaKhachHang == dsdp.MaKhachHang);
+                return kh;
+            }
+            catch { }
+            return null;
         }
     }
 }

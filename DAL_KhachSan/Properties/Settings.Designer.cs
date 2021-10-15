@@ -26,10 +26,32 @@ namespace DAL_KhachSan.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PC\\SQLEXPRESS;Initial Catalog=QLKhachSan;User ID=sa;Password=sql2012")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A12V4HU\\MYSQL;Initial Catalog=QLKhachSan;User ID=sa;Password=" +
+            "*my1106*")]
         public string QLKhachSanConnectionString {
             get {
                 return ((string)(this["QLKhachSanConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A12V4HU\\MYSQL;Initial Catalog=QLKhachSan;Integrated Security=" +
+            "True")]
+        public string QLKhachSanConnectionString1 {
+            get {
+                return ((string)(this["QLKhachSanConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-KTOVLDC;Initial Catalog=QLKhachSan;Integrated Security=True")]
+        public string QLKhachSanConnectionString2 {
+            get {
+                return ((string)(this["QLKhachSanConnectionString2"]));
             }
         }
     }

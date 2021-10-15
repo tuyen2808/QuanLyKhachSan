@@ -19,7 +19,7 @@ namespace DAL_KhachSan
         }
         private Dataprovider() { }
         // sửa cái dòng này theo SQL bên máy chị
-        public string connectionSTR = @"Data Source=PC\SQLEXPRESS;Initial Catalog=QLKhachSan;Integrated Security=True";
+        public string connectionSTR = @"Data Source=DESKTOP-KTOVLDC;Initial Catalog=QLKhachSan;Integrated Security=True";
         public DataTable ExcuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
