@@ -210,6 +210,10 @@ namespace DAL_KhachSan
             }
             return b;
         }
+
+
+        
+
         //================================= Loại Phòng ========================================
         //public string LayGiaLoaiPhong(string MaLoaiPhong)
         //    {

@@ -44,6 +44,7 @@
     <Compile Include="DAL_DatPhong.cs" />
     <Compile Include="DAL_DichVu.cs" />
     <Compile Include="DAL_NhanPhong.cs" />
+    <Compile Include="DAL_Phong.cs" />
     <Compile Include="DAL_QLKhachHang.cs" />
     <Compile Include="DataKhachSan.designer.cs">
       <AutoGen>True</AutoGen>

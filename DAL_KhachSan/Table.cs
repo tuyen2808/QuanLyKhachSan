@@ -73,5 +73,6 @@ namespace DAL_KhachSan
             get { return MaPhong; }
             set { MaPhong = value; }
         }
+
     }
 }

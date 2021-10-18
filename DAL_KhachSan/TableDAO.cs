@@ -32,6 +32,8 @@ namespace DAL_KhachSan
             }
             return tablelist;
         }
+
+        
        
     }
 }

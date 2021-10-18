@@ -94,6 +94,7 @@
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl1);
             this.Name = "MessageBoxThongBao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MessageBoxThongBao_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

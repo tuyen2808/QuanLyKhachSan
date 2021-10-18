@@ -47,7 +47,6 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.txtPhong = new DevExpress.XtraEditors.TextEdit();
             this.cbbTinhTrang = new DevExpress.XtraEditors.LookUpEdit();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.dtNgayTra = new DevExpress.XtraEditors.DateEdit();
@@ -67,6 +66,7 @@
             this.btnXacNhan = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.dtgvPDP = new System.Windows.Forms.DataGridView();
+            this.cbbPhong = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuocTich.Properties)).BeginInit();
@@ -77,7 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbKhachHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhong.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbTinhTrang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayTra.Properties.CalendarTimeProperties)).BeginInit();
@@ -171,7 +170,6 @@
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(291, 22);
             this.txtNgaySinh.TabIndex = 10;
-            this.txtNgaySinh.EditValueChanged += new System.EventHandler(this.txtNgaySinh_EditValueChanged);
             // 
             // txtCMND
             // 
@@ -231,7 +229,6 @@
             this.labelControl5.Size = new System.Drawing.Size(68, 23);
             this.labelControl5.TabIndex = 4;
             this.labelControl5.Text = "Địa Chỉ ";
-            this.labelControl5.Click += new System.EventHandler(this.labelControl5_Click);
             // 
             // labelControl4
             // 
@@ -276,7 +273,7 @@
             // groupControl2
             // 
             this.groupControl2.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl2.CaptionImageOptions.Image")));
-            this.groupControl2.Controls.Add(this.txtPhong);
+            this.groupControl2.Controls.Add(this.cbbPhong);
             this.groupControl2.Controls.Add(this.cbbTinhTrang);
             this.groupControl2.Controls.Add(this.numericUpDown1);
             this.groupControl2.Controls.Add(this.dtNgayTra);
@@ -295,14 +292,6 @@
             this.groupControl2.Size = new System.Drawing.Size(547, 454);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "THÔNG TIN ĐẶT PHÒNG";
-            // 
-            // txtPhong
-            // 
-            this.txtPhong.Enabled = false;
-            this.txtPhong.Location = new System.Drawing.Point(262, 371);
-            this.txtPhong.Name = "txtPhong";
-            this.txtPhong.Size = new System.Drawing.Size(269, 22);
-            this.txtPhong.TabIndex = 20;
             // 
             // cbbTinhTrang
             // 
@@ -501,6 +490,14 @@
             this.dtgvPDP.TabIndex = 0;
             this.dtgvPDP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPDP_CellContentClick);
             // 
+            // cbbPhong
+            // 
+            this.cbbPhong.FormattingEnabled = true;
+            this.cbbPhong.Location = new System.Drawing.Point(262, 367);
+            this.cbbPhong.Name = "cbbPhong";
+            this.cbbPhong.Size = new System.Drawing.Size(269, 24);
+            this.cbbPhong.TabIndex = 19;
+            // 
             // frmDatPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -526,7 +523,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhong.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbTinhTrang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayTra.Properties.CalendarTimeProperties)).EndInit();
@@ -581,9 +577,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private DevExpress.XtraEditors.SimpleButton btnHuy;
         private DevExpress.XtraEditors.SimpleButton btnXacNhan;
-        private DevExpress.XtraEditors.TextEdit txtPhong;
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private System.Windows.Forms.DataGridView dtgvPDP;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private System.Windows.Forms.ComboBox cbbPhong;
     }
 }

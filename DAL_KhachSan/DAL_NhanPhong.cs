@@ -37,7 +37,16 @@ namespace DAL_KhachSan
         }
         public List<PHIEUDATPHONG> LayListPhieuDat(string maKH)
         {
-            return (from p in qlks.PHIEUDATPHONGs where p.MaKhachHang == maKH select p).ToList();
+            List<PHIEUDATPHONG> newlst = new List<PHIEUDATPHONG>();
+            List<PHIEUDATPHONG> lst = qlks.PHIEUDATPHONGs.Where(x => x.MaKhachHang == maKH).ToList();
+            foreach (PHIEUDATPHONG p in lst)
+            {
+                if (qlks.CHITIETDATPHONGs.SingleOrDefault(x=>x.MaPhieuDat==p.MaPhieuDat&&x.NgayTra==null)!=null)
+                {
+                    newlst.Add(p);
+                }
+            }
+            return newlst;
         }
         public List<NHANPHONG> LayListPhieuNhan(string maKH)
         {
@@ -58,6 +67,9 @@ namespace DAL_KhachSan
                 p.MaLoaiTinhTrangPhong = "TT03";
             }
             qlks.SubmitChanges();
+            qlks.Refresh(System.Data.Linq.RefreshMode.KeepChanges, qlks.PHONGs);
+            qlks.Refresh(System.Data.Linq.RefreshMode.KeepChanges, qlks.NHANPHONGs);
+            qlks.Refresh(System.Data.Linq.RefreshMode.KeepChanges, qlks.CHITETNHANPHONGs);
         }
         public string LayTenKH(string maKH)
         {
@@ -104,6 +116,11 @@ namespace DAL_KhachSan
             }
             catch { }
             return null;
+        }
+
+        public string laymanhanphong(string maphong)
+        {
+            return qlks.CHITETNHANPHONGs.FirstOrDefault(x => x.MaPhong == maphong && x.NgayTraThucTe == null).MaNhanPhong.ToString();
         }
     }
 }

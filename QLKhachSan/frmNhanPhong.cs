@@ -84,6 +84,32 @@ namespace QLKhachSan
                         }
                     }
                 }
+                else if (flag == true && kiemtra() == true)
+                {
+                    NHANPHONG np = new NHANPHONG();
+                    CHITETNHANPHONG ctnp = new CHITETNHANPHONG();
+                    np.MaNhanPhong = txtMaNhanPhong.Text;
+                    np.MaPhieuDat = dtgvCTPD.CurrentRow.Cells[0].Value.ToString();
+                    np.MaKhachHang = maKhachHang;
+
+                    ctnp.MaNhanPhong = txtMaNhanPhong.Text;
+                    ctnp.MaPhong = maPhong != null ? maPhong : cbbChonPhong.SelectedValue.ToString();
+                    ctnp.NgayNhan = dtNgayNhan.DateTime;
+                    ctnp.NgayTraDuKien = dtNgaytradukien.DateTime;
+                    ctnp.NgayTraThucTe = null;
+                    n.ThemNhanPhong(np, ctnp);
+                    bltb.Show("Nhận phòng thành công!");
+                    txtMaNhanPhong.Text = n.LayMaNP();
+
+                    dtNgaytradukien.EditValue = DateTime.Now;
+
+                    var listPn = n.LayListPhieuNhan(maKhachHang);
+                    dtgvPNP.Rows.Clear();
+                    foreach (var item in listPn)
+                    {
+                        dtgvPNP.Rows.Add(item.MaNhanPhong, item.MaPhieuDat, item.MaKhachHang);
+                    }
+                }
             }
             catch (Exception ex)
             {

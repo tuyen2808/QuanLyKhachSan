@@ -108,6 +108,7 @@
             this.Controls.Add(this.lblThongBao);
             this.Controls.Add(this.labelControl1);
             this.Name = "MessageBoxYesNo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MessageBoxYesNo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

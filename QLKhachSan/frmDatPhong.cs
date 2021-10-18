@@ -18,33 +18,20 @@ namespace QLKhachSan
         public frmDatPhong()
         {
             InitializeComponent();
-            
+
         }
         public String NhanMaPhong
         {
-            get {return MaPhong;}
+            get { return MaPhong; }
 
-            set { MaPhong = value;}
+            set { MaPhong = value; }
         }
 
         DAL_DatPhong d = new DAL_DatPhong();
         BLThongBao bltb = new BLThongBao();
+        DAL_Phong p = new DAL_Phong();
         public string maphong { get; set; }
         public string madatphong { get; set; }
-        private void labelControl5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textEdit2_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNgaySinh_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnThemKH_Click(object sender, EventArgs e)
         {
@@ -66,12 +53,15 @@ namespace QLKhachSan
             dtNgayTao.Enabled = false;
             txtMaDP.Enabled = false;
             cbbTinhTrang.Enabled = false;
-            
+
 
             cbbKhachHang.Properties.DataSource = d.loadcbbKH();
             cbbKhachHang.Properties.DisplayMember = "TenKhachHang";
             cbbKhachHang.Properties.ValueMember = "MaKhachHang";
 
+            cbbPhong.DataSource = p.loadPhongTrong();
+            cbbPhong.DisplayMember = "GhiChu";
+            cbbPhong.ValueMember = "MaPhong";
 
             //var listpd = d.LayListPhieuDat(cbbKhachHang.Selected.va());
 
@@ -80,14 +70,13 @@ namespace QLKhachSan
             //{
             //    dtgvPDP.Rows.Add(item.MaPhieuDat, item.MaKhachHang);
             //}
-            txtPhong.Text = MaPhong;
 
-			dtNgayTao.EditValue = DateTime.Now;
+            dtNgayTao.EditValue = DateTime.Now;
             dtNgayNhan.EditValue = DateTime.Now;
             dtNgayTra.EditValue = DateTime.Now;
             txtMaDP.Text = d.LayMaDP();
 
-            
+
 
         }
 
@@ -102,7 +91,7 @@ namespace QLKhachSan
                 rdoNam.Checked = true;
             else
                 rdoNu.Checked = true;
-         
+
         }
 
         private void txtSDT_EditValueChanged(object sender, EventArgs e)
@@ -115,43 +104,39 @@ namespace QLKhachSan
             this.Close();
         }
 
-		private void cbbPhong_EditValueChanged(object sender, EventArgs e)
-		{
-			maphong = txtPhong.EditValue.ToString();
-		}
-
-		private void btnXacNhan_Click(object sender, EventArgs e)
+        private void btnXacNhan_Click(object sender, EventArgs e)
         {
-			try
-			{
-				var phieuDP = new PHIEUDATPHONG();
-				var chiTietDP = new CHITIETDATPHONG();
+            try
+            {
+                var phieuDP = new PHIEUDATPHONG();
+                var chiTietDP = new CHITIETDATPHONG();
 
-				phieuDP.MaPhieuDat = txtMaDP.Text;
-				phieuDP.MaKhachHang = cbbKhachHang.EditValue.ToString();
+                phieuDP.MaPhieuDat = txtMaDP.Text;
+                phieuDP.MaKhachHang = cbbKhachHang.EditValue.ToString();
 
-				chiTietDP.MaPhieuDat = txtMaDP.Text;
-                chiTietDP.MaPhong = txtPhong.Text;
-				chiTietDP.NgayLap = dtNgayTao.DateTime;
-				chiTietDP.NgayNhan = dtNgayNhan.DateTime;
-				chiTietDP.NgayTra = dtNgayTra.DateTime;
-				chiTietDP.SoNguoi = Convert.ToInt32(numericUpDown1.Value);
+                chiTietDP.MaPhieuDat = txtMaDP.Text;
+                chiTietDP.MaPhong = cbbPhong.SelectedValue.ToString();
+                chiTietDP.NgayLap = dtNgayTao.DateTime;
+                chiTietDP.NgayNhan = dtNgayNhan.DateTime;
+                chiTietDP.NgayTra = null;
+                chiTietDP.SoNguoi = Convert.ToInt32(numericUpDown1.Value);
 
-				d.ThemDP(phieuDP, chiTietDP);
-				bltb.Show("Thêm Phiếu Thành Công!");
-			}
-			catch(Exception ex)
-			{
-				Console.WriteLine(ex);
-				bltb.Show("Lỗi !");
-			}
+                d.ThemDP(phieuDP, chiTietDP);
+                bltb.Show("Thêm Phiếu Thành Công!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                bltb.Show("Lỗi !");
+            }
 
-            
-		}
+
+        }
 
         private void dtNgayTra_DateTimeChanged(object sender, EventArgs e)
         {
-            if(dtNgayTra.DateTime < dtNgayNhan.DateTime){
+            if (dtNgayTra.DateTime < dtNgayNhan.DateTime)
+            {
                 bltb.Show("Ngày tả phải lớn hơn ngày nhận");
             }
         }
@@ -161,5 +146,5 @@ namespace QLKhachSan
 
         }
 
-	}
+    }
 }
